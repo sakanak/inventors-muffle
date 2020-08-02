@@ -14,12 +14,14 @@ N. Bhatnagar, A. Crowe, S. Kandala, V. Kanigicherla, N. Kalale
     ```
     However, make sure to check the [Tensorflow website](https://www.tensorflow.org/install) to ensure that your version will work
 
-* Install Tensorflow using Python's package manager, pip. If your version of pip is out of date, first update it using
+* Install Tensorflow using Python's package manager, pip. When installing, make sure that you are running an admin or root shell so that you can avoid permissions errors. If your version of pip is out of date, first update it using
     ```Shell
     $ pip install --upgrade pip
     ```
-    Then, install Tensorflow with
+    Then, install Tensorflow and Tensorflow IO with
     ```Shell
-    $ pip install tensorflow
+    $ pip install tensorflow tensorflow-io
     ```
+    Keep in mind that this installation might take a few minutes.
+
     

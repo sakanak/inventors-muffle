@@ -24,4 +24,13 @@ N. Bhatnagar, A. Crowe, S. Kandala, V. Kanigicherla, N. Kalale
     ```
     Keep in mind that this installation might take a few minutes.
 
-    
+* Install matplotlib, pydub, and scipy for audio processing. These packages can be installed in the same way as the above Tensorflow packages with
+    ```Shell
+    $ pip install matplotlib pydub scipy
+    ```
+    Again, this installation might take a few minutes.
+
+* To run the code, navigate to the directory with the Python file you intend to run and do
+    ```Shell
+    $ python filename.py
+    ```

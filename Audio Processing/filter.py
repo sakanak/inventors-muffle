@@ -5,13 +5,16 @@ from scipy import fft
 import numpy as np
 import matplotlib.pyplot as plt
 
-path = "../Audio Recordings/Banana/BananaU1.mp3"
-frq_cutoff = 20
+# goal: attenuate uncommon frequencies and amplify resulting signal to enhance speech
+
+# change these two variables to alter the input and the frequency cutoff for the audio processing respectively
+path = "../Audio Recordings/Corona/CoronaM2.mp3"
+frq_cutoff = 10
 
 # decompress mp3 to temp.wav for processing
 input_file = pydub.AudioSegment.from_mp3(path)
-input_file.export("temp.wav", format = "wav")
-rate, aud_data = wavfile.read("temp.wav")
+input_file.export("input.wav", format = "wav")
+rate, aud_data = wavfile.read("input.wav")
 
 def frequency_spectrum(x, sf):
     """
@@ -54,6 +57,12 @@ a, b = butter(4, (frq[mini] * 2 / rate, frq[maxi] * 2 / rate), "bandpass")
 # apply filter to original audio
 aud_output = lfilter(a, b, aud_data)
 
+# amplify output audio to correct for bandpass attenuation
+aud_output *= 2
+
+# cast audio output to int16 for .wav formatting
+aud_output = aud_output.astype(np.int16)
+
 # visualization of freqs/distributions
 y = aud_data
 t = np.arange(len(y)) / float(rate)
@@ -63,4 +72,5 @@ plt.plot(t, y)
 plt.plot(t, aud_output)
 plt.show()
 
-wavfile.write("output.wav", rate, aud_data)
+# export output 
+wavfile.write("output.wav", rate, aud_output)

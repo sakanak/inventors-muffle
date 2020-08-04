@@ -9,7 +9,7 @@ for word in words:
     for state in states:
         for x in range(1, 6):
             # load in audio sample
-            audio = tfio.audio.AudioIOTensor("Audio Recordings/{0}/{0}{1}{2}.mp3".format(word, state, x))
+            audio = tfio.audio.AudioIOTensor("../Audio Recordings/{0}/{0}{1}{2}.mp3".format(word, state, x))
 
             # remove last dimension
             audio_tensor = tf.squeeze(audio.to_tensor(), axis=[-1])
@@ -22,4 +22,4 @@ for word in words:
             plt.xlabel("Windows")
             plt.ylabel("Frequency")
             plt.imshow(tf.math.log(spectrogram).numpy())
-            plt.savefig("Spectrograms/{0}/{0}{1}{2}.png".format(word, state, x))
+            plt.savefig("{0}/{0}{1}{2}.png".format(word, state, x))
